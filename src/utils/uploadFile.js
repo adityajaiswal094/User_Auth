@@ -3,15 +3,6 @@ const multer = require("multer");
 const uploadFile = (req, res, next) => {
   const user_id = req.header("user_id");
 
-  const path = req.file.path;
-//   console.log(path);
-    if (path === undefined) {
-      return res.status(400).json({
-        title: "Bad Request",
-        message: "File to be uploaded is missing!",
-      });
-    }
-
   const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, __dirname + "/../uploadedImages");
